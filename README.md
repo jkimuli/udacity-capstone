@@ -17,6 +17,6 @@ of the C1/CD capabilities of the Jenkins Automation server
 
 ![Jenkins Pipeline Steps](/screenshots/jenkins_eks_deploy.png)
 
-![kubectl Get Services]
+![kubectl Get Services](/screenshots/kubectl_services.png)
 
-![AWS Website]()
+![Live Website Running Nginx](/screenshots/live_nginx_website.png)
