@@ -31,6 +31,19 @@ pipeline {
                     
             }
         }
+
+        stage('Deploy container to a Kubernetes cluster on AWS EKS'){
+
+            steps{
+
+                echo "Deploying to AWS EKS"
+                sh 'chmod +x deploy.sh'
+                sh './deploy.sh'
+
+                
+            }
+
+        }
     }
          
 }
