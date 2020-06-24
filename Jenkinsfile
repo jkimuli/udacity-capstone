@@ -22,11 +22,11 @@ pipeline {
             steps {
                 echo 'Starting to build docker image'
 
-                sh 'docker build -t jkimuli/capstone-nginx:latest .'
-
-                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com']){
-                    
-                    sh 'docker push jkimuli/capstone-nginx:latest'
+                script {
+                    dockerImage = docker.build("jkimuli/capstone-nginx:latest")
+                    docker.withRegistry('', 'docker-hub-credentials') {
+                        dockerImage.push()
+                    }
                 }
                     
             }
