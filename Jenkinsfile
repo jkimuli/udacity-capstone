@@ -18,16 +18,17 @@ pipeline {
             }
         } 
 
-        /***stage('Build image') {
+        stage('Build and deploy docker image to docker hub' ) {
             steps {
                 echo 'Starting to build docker image'
 
                 script {
-                    def customImage = docker.build("jkimuli/udacity-capstone:latest")
-                    customImage.push()
+                    def customImage = docker.build("jkimuli/capstone-nginx")
+                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials' )
+                    customImage.push('latest')
                 }
             }
-        }***/
+        }
          
      }
 }
