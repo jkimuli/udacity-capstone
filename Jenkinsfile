@@ -1,7 +1,7 @@
 pipeline {
      agent any
 
-     stages {
+    stages {
 
         stage('Lint HTML') {
             steps {
@@ -22,13 +22,15 @@ pipeline {
             steps {
                 echo 'Starting to build docker image'
 
-                script {
-                    def customImage = docker.build("jkimuli/capstone-nginx")
-                    docker.withRegistry('https://hub.docker.com', 'docker-hub-credentials' )
-                    customImage.push('latest')
+                sh 'docker build -t jkimuli/capstone-nginx:latest .'
+
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com']){
+                    
+                    sh 'docker push jkimuli/capstone-nginx:latest'
                 }
+                    
             }
         }
+    }
          
-     }
 }
