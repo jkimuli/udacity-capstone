@@ -19,4 +19,4 @@ of the C1/CD capabilities of the Jenkins Automation server
 
 ![kubectl Get Services]
 
-Live website on AWS [here](http://ec2-54-167-252-171.compute-1.amazonaws.com/)
+![AWS Website]()

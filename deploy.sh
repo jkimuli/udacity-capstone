@@ -1,6 +1,6 @@
 # Create a deployment on a Kubernetes cluster
 
-kubectl create deployment udacity-capstone --image=jkimuli/capstone-nginx:latest
+kubectl create deployment udacity-capstone --image=jkimuli/capstone-nginx:latest --replicas=2
 
 # get pods
 
