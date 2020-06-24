@@ -1,5 +1,5 @@
 pipeline {
-     agent any
+    agent any
 
     stages {
 
@@ -38,9 +38,12 @@ pipeline {
 
                 echo "Deploying to AWS EKS"
                 sh 'chmod +x deploy.sh'
-                sh './deploy.sh'
 
-                
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+                    sh 'aws eks --region us-east-1 update-kubeconfig --name capstone-nginx-cluster'
+                    sh './deploy.sh'
+                 }
+                                    
             }
 
         }
